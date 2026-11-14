@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - source-bundle.zip.b64
+      - source-bundle.ready
 
 permissions:
   contents: write
@@ -21,7 +21,7 @@ jobs:
           base64 --decode source-bundle.zip.b64 > /tmp/whatsapp-campaign-studio.zip
           unzip -q /tmp/whatsapp-campaign-studio.zip -d /tmp/project
           cp -a /tmp/project/wa-campaign-studio/. .
-          rm -f source-bundle.zip.b64
+          rm -f source-bundle.zip.b64 source-bundle.ready
           rm -f .github/workflows/expand-source.yml
 
       - name: Commit source files
