@@ -1,0 +1,14 @@
+services:
+  whatsapp-campaign-studio:
+    build: .
+    container_name: whatsapp-campaign-studio
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - campaign_data:/data
+
+volumes:
+  campaign_data:
